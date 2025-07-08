@@ -8,6 +8,8 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5.QtCore import QEvent
 from resemblyzer import VoiceEncoder, preprocess_wav
+from PyQt5.QtCore import QTimer
+import sounddevice as sd
 
 
 
@@ -36,14 +38,64 @@ class MainWindow(QMainWindow):
                 background-position: center;
             }
             """)
-        self.resize(475, 550)
-        self.setFixedSize(475, 550)
+        self.resize(450, 550)
+        self.setFixedSize(450, 550)
 
         self.pcButton.setCheckable(True)
         self.mairoButton.setCheckable(True)
 
+        self.label.setFixedSize(30, 30)
+        self.label.setStyleSheet("""
+        QLabel {
+            background-color: red;
+            border-radius: 15px;
+        }
+        """)
+        self.recTimer = QTimer()
+        self.recTimer.timeout.connect(self.toggle_rec_indicator)
+        self.recVisible = False
 
+        devices = sd.query_devices()
+        self.mic_devices = []
 
+        # Önce tüm input cihazlarını ekle
+        for i, d in enumerate(devices):
+            if d['max_input_channels'] > 0:
+                text = f"{i}: {d['name']}"
+                self.comboMic.addItem(text)
+                self.mic_devices.append(i)
+
+        # Eğer hiç input cihazı yoksa uyar
+        if not self.mic_devices:
+            QMessageBox.critical(self, "Hata",
+                                 "Hiç mikrofon bulunamadı! Bilgisayarınıza mikrofon bağlı mı kontrol edin.")
+
+    def toggle_rec_indicator(self):
+        if self.recVisible:
+            # Sönük durum (gri)
+            self.lblRec.setStyleSheet("""
+                QLabel {
+                    background-color: rgba(150, 150, 150, 0.3);
+                    border-radius: 15px;
+                    min-width: 30px;
+                    min-height: 30px;
+                    max-width: 30px;
+                    max-height: 30px;
+                }
+            """)
+        else:
+            # Yanık durum (kırmızı)
+            self.lblRec.setStyleSheet("""
+                QLabel {
+                    background-color: red;
+                    border-radius: 15px;
+                    min-width: 30px;
+                    min-height: 30px;
+                    max-width: 30px;
+                    max-height: 30px;
+                }
+            """)
+        self.recVisible = not self.recVisible
 
     def eventFilter(self, obj, event):
         if obj == self.labelInfo:
@@ -81,6 +133,16 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "Uyarı", "Lütfen bir isim girin.")
             return
 
+        # ComboBox'tan seçili mikrofon indexini al
+        selected_index = self.comboMic.currentIndex()
+        device_id = self.mic_devices[selected_index]
+
+        selected_index = self.comboMic.currentIndex()
+        if selected_index < 0 or selected_index >= len(self.mic_devices):
+            QMessageBox.critical(self, "Hata", "Geçerli bir mikrofon seçimi yapmalısınız.")
+            return
+
+
         # Ses kaydı
         import sounddevice as sd
         from scipy.io.wavfile import write
@@ -88,8 +150,8 @@ class MainWindow(QMainWindow):
         fs = 16000
         seconds = 15
 
-        QMessageBox.information(self, "Bilgi", "Kayıt başlıyor. 10 saniye boyunca konuşun.")
-        recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
+        QMessageBox.information(self, "Bilgi", "Kayıt başlıyor. 15 saniye boyunca konuşun.")
+        recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1, device=device_id)
         sd.wait()
 
         # Klasör yoksa oluştur
@@ -117,6 +179,7 @@ class MainWindow(QMainWindow):
         self.conn.commit()
 
         QMessageBox.information(self, "Başarılı", f"{user_name} kullanıcısı kaydedildi.")
+
 
     def kayitlari_goster(self):
         # Veritabanından kullanıcıları çek
