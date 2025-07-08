@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>475</width>
+    <height>579</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget {
+    border-image: url(&quot;mairoArkaPlan.jpg&quot;) 0 0 0 0 stretch stretch;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pcButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>70</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgba(0, 0, 0, 0); /* Şeffaf arka plan */
+    color: white;
+    border: 2px solid white;           /* Beyaz kenarlık */
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hafif parıltı */
+    border: 2px solid #b38aff;                 /* Hoverda mor kenarlık */
+    color: #b38aff;
+}
+QPushButton:checked {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #b38aff;
+    color: #b38aff;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Hey Bilgisayar!</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>250</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #b38aff;
+    border-radius: 5px;
+}
+
+QProgressBar::chunk {
+    background-color: #b38aff;
+    width: 10px;
+    margin: 1px;
+}
+</string>
+    </property>
+    <property name="value">
+     <number>45</number>
+    </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mairoButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>130</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgba(0, 0, 0, 0); /* Şeffaf arka plan */
+    color: white;
+    border: 2px solid white;           /* Beyaz kenarlık */
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hafif parıltı */
+    border: 2px solid #b38aff;                 /* Hoverda mor kenarlık */
+    color: #b38aff;
+}
+QPushButton:checked {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #b38aff;
+    color: #b38aff;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Hey Mairo!</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sesTainmaButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>190</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgba(0, 0, 0, 0); /* Şeffaf arka plan */
+    color: white;
+    border: 2px solid white;           /* Beyaz kenarlık */
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hafif parıltı */
+    border: 2px solid #b38aff;                 /* Hoverda mor kenarlık */
+    color: #b38aff;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Ses Tanıtma</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="baslatButton">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>440</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgba(0, 0, 0, 0); /* Şeffaf arka plan */
+    color: white;
+    border: 2px solid white;           /* Beyaz kenarlık */
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hafif parıltı */
+    border: 2px solid #b38aff;                 /* Hoverda mor kenarlık */
+    color: #b38aff;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Başlat</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="KayitlarInfo">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>350</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgba(0, 0, 0, 0); /* Şeffaf arka plan */
+    color: white;
+    border: 2px solid white;           /* Beyaz kenarlık */
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hafif parıltı */
+    border: 2px solid #b38aff;                 /* Hoverda mor kenarlık */
+    color: #b38aff;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Ses Kayıtları</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelInfo">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>200</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+color : white;
+border: 2px solid white;
+border-radius: 10px;}</string>
+    </property>
+    <property name="text">
+     <string>info</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sesKaytInfo">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>300</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ffffff;
+border: 1px solid #888;
+border-radius: 6px;
+padding: 5px;
+color: #333;
+</string>
+    </property>
+    <property name="text">
+     <string>Lütfen 10-15 sn arası kayıt alın.
+</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>270</y>
+      <width>181</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>sesTainmaButton</zorder>
+   <zorder>sesKaytInfo</zorder>
+   <zorder>pcButton</zorder>
+   <zorder>progressBar</zorder>
+   <zorder>mairoButton</zorder>
+   <zorder>baslatButton</zorder>
+   <zorder>KayitlarInfo</zorder>
+   <zorder>labelInfo</zorder>
+   <zorder>lineEdit</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>475</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
